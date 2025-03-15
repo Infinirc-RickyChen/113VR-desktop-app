@@ -1,0 +1,58 @@
+{
+  "name": "photosynthesis-journey",
+  "productName": "光合之旅",
+  "version": "1.0.0",
+  "description": "學習歷程分析平台",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pack": "electron-builder --dir",
+    "dist:mac": "electron-builder --mac",
+    "dist:win": "electron-builder --win",
+    "dist": "electron-builder -mw"
+  },
+  "keywords": [
+    "photosynthesis",
+    "journey",
+    "光合之旅",
+    "education"
+  ],
+  "author": "Ricky Chen",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^29.4.6",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.rickychen.photosynthesisjourney",
+    "productName": "光合之旅",
+    "mac": {
+      "category": "public.app-category.education",
+      "icon": "images/icon.png",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": ["x64", "arm64"]
+        },
+        {
+          "target": "zip",
+          "arch": ["x64", "arm64"]
+        }
+      ]
+    },
+    "win": {
+      "icon": "images/icon.png",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ]
+    },
+    "directories": {
+      "output": "dist"
+    }
+  },
+  "type": "commonjs"
+}

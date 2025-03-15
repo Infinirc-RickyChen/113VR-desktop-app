@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; script-src 'self'">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>光合之旅學習歷程數據分析平台</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- 自訂標題列 -->
+  <div class="title-bar">
+    <div class="title-bar-text">光合之旅學習歷程數據分析平台</div>
+    <div class="title-bar-controls">
+      <button id="btn-minimize" class="title-bar-button">─</button>
+      <button id="btn-maximize" class="title-bar-button">□</button>
+      <button id="btn-close" class="title-bar-button">✕</button>
+    </div>
+  </div>
+
+  <!-- 主要內容區域 -->
+  <div class="container">
+    <!-- 側邊欄 -->
+    <div class="sidebar">
+      <div class="logo-container">
+        <img src="images/logo.png" alt="光合之旅" class="logo">
+
+      </div>
+      
+      <!-- 統計摘要 -->
+      <div class="sidebar-stats">
+        <div class="stat-item">
+          <h4>學生數據統計</h4>
+          <div class="stat-value" id="student-count">0</div>
+          <div class="stat-label">學生人數</div>
+        </div>
+        <div class="stat-item">
+          <h4>平均學習表現</h4>
+          <div class="stat-value" id="avg-completion">0%</div>
+          <div class="stat-label">單元完成度</div>
+        </div>
+        <div class="stat-item">
+          <h4>平均學習時間</h4>
+          <div class="stat-value" id="avg-time">0 分鐘</div>
+          <div class="stat-label">每單元使用時間</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 內容區域 -->
+    <div class="content" id="content">
+      <div class="module-container">
+        <h1>學習歷程分析</h1>
+        <div class="module-image-container">
+          <img src="images/logo.png" alt="多功能的莖" class="module-banner">
+        </div>
+        
+        <div class="analysis-container">
+          <div class="file-upload-container">
+            <h3>上傳學生資料</h3>
+            <p>選擇要上傳的 TXT 文件（每個文件代表一個學生）</p>
+            <button id="upload-btn" class="primary-btn">選擇檔案上傳</button>
+            <div id="upload-info" class="upload-info">尚未上傳檔案</div>
+          </div>
+          
+          <div id="results-container" class="results-container hidden">
+            <h3>學生單元完成度統計圖</h3>
+            <div class="charts-container">
+              <div class="chart-item">
+                <canvas id="completion-chart"></canvas>
+              </div>
+              <div class="chart-item">
+                <canvas id="avg-completion-chart"></canvas>
+              </div>
+            </div>
+            
+            <h3>學生完成度與使用時間</h3>
+            <div class="table-container">
+              <table id="results-table" class="results-table">
+                <thead>
+                  <tr>
+                    <th>學生</th>
+                    <th>單元</th>
+                    <th>總元素</th>
+                    <th>完成元素</th>
+                    <th>完成度 (%)</th>
+                    <th>使用時間 (分鐘)</th>
+                  </tr>
+                </thead>
+                <tbody id="results-body">
+                  <!-- 資料會由JavaScript動態生成 -->
+                </tbody>
+              </table>
+            </div>
+            
+            <div class="summary-container">
+              <div class="summary-item">
+                <h4>平均完成時間</h4>
+                <p id="avg-time-value">0 分鐘</p>
+              </div>
+              <div class="summary-item">
+                <h4>平均完成度</h4>
+                <p id="avg-completion-value">0%</p>
+              </div>
+            </div>
+            
+            <h3>學生操作記錄預覽</h3>
+            <div class="student-detail-container">
+              <select id="student-selector" class="student-selector">
+                <option value="">選擇學生</option>
+              </select>
+              <div id="student-detail-table-container" class="table-container">
+                <table id="student-detail-table" class="results-table">
+                  <thead>
+                    <tr>
+                      <th>historyId</th>
+                      <th>timestamp</th>
+                      <th>value1</th>
+                      <th>value2</th>
+                      <th>Scene_Name</th>
+                    </tr>
+                  </thead>
+                  <tbody id="detail-body">
+                    <!-- 資料會由JavaScript動態生成 -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
